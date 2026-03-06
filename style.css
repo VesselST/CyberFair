@@ -1,0 +1,116 @@
+/* style.css - 基礎樣式與電腦版排版 */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --v-brown: #4E3629; 
+    --v-gold: #B8860B; 
+    --paper: #F9F7F2; 
+    --text: #433422;
+}
+
+/* 1. 基礎重設 */
+body, html {
+    background-color: var(--paper); 
+    color: var(--text); 
+    font-family: 'Lora', serif; 
+    margin: 0; 
+    padding: 0;
+    overflow-x: hidden; /* 確保不會有左右滾動條 */
+    width: 100%;
+}
+
+/* 2. 導覽列：包含下拉選單 */
+nav { 
+    background: var(--v-brown); 
+    padding: 1.2rem; 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    position: relative;
+    z-index: 1000;
+}
+
+nav a { 
+    color: var(--paper); 
+    text-decoration: none; 
+    font-family: 'Playfair Display'; 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+}
+
+nav a:hover { color: var(--v-gold); }
+
+/* 下拉選單核心樣式 */
+.dropdown { position: relative; display: inline-block; }
+.dropbtn::after { content: " ▾"; font-size: 0.8rem; }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--v-brown);
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1001;
+    top: 100%;
+    left: 0;
+}
+.dropdown-content a {
+    color: #f5f5dc !important;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dropdown-content a:hover {
+    background-color: var(--v-gold);
+    color: var(--v-brown) !important;
+}
+.dropdown:hover .dropdown-content { display: block; }
+
+/* 3. 內容容器 (電腦版) */
+.container { 
+    max-width: 850px; 
+    margin: 0 auto; 
+    padding: 50px 20px; 
+}
+
+h1, h2 { 
+    font-family: 'Playfair Display'; 
+    color: var(--v-brown); 
+    text-align: center; 
+}
+
+/* 4. 圖片框架 (電腦版保留白框質感) */
+.image-frame { 
+    margin: 30px 0; 
+    padding: 10px; 
+    background: white; 
+    border: 1px solid #ddd; 
+    text-align: center; 
+}
+
+.image-frame img { 
+    max-width: 100%; 
+    height: auto; 
+    display: block;
+    margin: 0 auto;
+}
+
+.caption { 
+    font-size: 0.85rem; 
+    font-style: italic; 
+    color: var(--v-brown); 
+    margin-top: 10px; 
+}
+
+/* 5. 金句樣式 */
+.quote { 
+    font-family: 'Playfair Display'; 
+    font-style: italic; 
+    font-size: 1.3rem; 
+    padding: 25px; 
+    background: rgba(184,134,11,0.05); 
+    border-left: 5px solid var(--v-gold); 
+    margin: 30px 0; 
+}
