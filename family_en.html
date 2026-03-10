@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Family & Turning Points | Chi Wen-Hao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+/* --- 頁面元件樣式 --- */
+.motivation-box {
+    background-color: #fff;
+    border: 2px double var(--v-brown);
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.motivation-box::before {
+    content: "Research Motivation";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: var(--v-brown);
+}
+
+.process-step {
+    border-left: 2px solid var(--v-gold);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+/* --- Footer 基礎佈局 --- */
+.site-footer {
+    background-color: #2b1d14; /* 深咖啡色背景 */
+    color: #ccac82;
+    padding: 60px 0;
+    border-top: 2px solid #ccac82;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.footer-left, .footer-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- 標題行與對齊 --- */
+.footer-title-row {
+    display: flex;
+    align-items: center; 
+    gap: 20px;           
+    margin-bottom: 20px; 
+    border-bottom: 1px solid #3d2b1f; 
+    padding-bottom: 10px;
+}
+
+.footer-title-row h3 {
+    margin-bottom: 0;
+    white-space: nowrap; 
+}
+
+/* --- 文字內容 --- */
+.footer-text p, .intro-content p {
+    text-align: justify; 
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* --- Logo 容器設定 --- */
+.main-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 若標題旁不需要置底，此處由 footer-title-row 統一管理 */
+}
+
+.footer-logo-img {
+    height: 30px; /* 標題旁精緻尺寸 */
+}
+
+.logo-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+/* --- 右側 Cyberfair Logo --- */
+.cyberfair-container {
+    margin-top: auto; 
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.cyber-logo {
+    height: 60px;
+}
+nav {
+    background: var(--v-brown);
+    /* 增加上下 padding 達成加厚 (原本可能是 1.2rem) */
+    padding: 3.5rem 2rem !important; 
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 垂直居中 */
+    gap: 25px;
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap; /* 手機版自動換行 */
+}
+
+/* 圖片容器 */
+.nav-logo-box {
+    margin-right: 35px; /* 與第一個連結的距離 */
+    display: flex;
+    align-items: center;
+}
+
+/* 圖片本身大小控制 */
+.nav-brand-img {
+    height: 100px; /* 這裡調整你要的圖片高度，會直接撐開 nav */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); /* 增加一點立體感 */
+}
+
+/* 確保下拉選單在加厚後的 nav 依然對齊正確 */
+.dropdown-content {
+    top: 100%; 
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1.5rem 10px !important; /* 手機版稍微縮減一點點厚度 */
+        gap: 12px;
+    }
+    .nav-brand-img {
+        height: 45px; /* 手機版圖片縮小一點 */
+    }
+}
+
+@media (max-width: 768px) {
+    /* 修正導覽列選單 (防止被裁切) */
+    nav {
+        flex-wrap: wrap; /* 自動換行 */
+        padding: 10px;
+        gap: 10px;
+        justify-content: center;
+    }
+    nav a { font-size: 0.75rem; padding: 5px; }
+    .dropdown-content { min-width: 160px; }
+
+    /* 修正父層 Container */
+    .container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 修正照片：滿版 + 內圈精緻白框 */
+    .image-frame {
+        width: 100vw !important;
+        margin-left: -20px !important; /* 抵消 container 的 padding */
+        position: relative;
+        left: 0;
+        padding: 8px !important; /* 這是你要求的精緻白框厚度 */
+        background: white !important; /* 白框顏色 */
+        border-top: 1px solid #eee !important;
+        border-bottom: 1px solid #eee !important;
+        box-sizing: border-box !important;
+    }
+
+    .image-frame img {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+
+    /* 修正 YouTube 區塊 (防止被裁切) */
+    .video-section div {
+        max-width: 100% !important;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    iframe {
+        width: 100% !important; /* 強制寬度 100% */
+        height: auto;
+        aspect-ratio: 16 / 9; /* 保持比例 */
+    }
+
+    /* 文字保護 */
+    p, h1, h2, h3 { padding: 0 !important; }
+}
+
+/* --- 4. Footer 與其他 (保留原本) --- */
+.site-footer { background-color: #2b1d14; color: var(--v-gold); padding: 60px 0; }
+.footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+/* --- 調整頁尾文字顏色 --- */
+
+/* 1. 針對最底部的版權宣告文字 (單獨的 footer 標籤) */
+footer p {
+    color: #999 !important; /* 淺灰色 */
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* 2. 針對深色 site-footer 內部的中英文說明文字 */
+.footer-text p, .intro-content p {
+    color: #d1c4b9 !important; /* 淺棕灰色，在深色背景下易讀且有質感 */
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* 3. 針對深色 site-footer 內部的英文小字 (如果有 class="en") */
+.footer-text p.en, .intro-content p.en {
+    color: #bfae9f !important; /* 比中文再稍微淺一點點，區分語系 */
+    font-size: 0.85rem;
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <img src="images/header_01.png" alt="Logo" class="nav-brand-img">
+    <a href="index_en.html">Home</a>
+    <a href="life_en.html">Life</a>
+    
+    <div class="dropdown">
+        <a href="career_en.html" class="dropbtn">Career</a>
+        <div class="dropdown-content">
+            <a href="adversity_en.html">Overcoming Adversity</a>
+            <a href="low_points_en.html">Overcoming the Low Points</a>
+            <a href="shose-trend_en.html">Roller Skating Shoes Trend</a>
+            <a href="scaling_en.html">Internationalization and Scaling</a>
+        </div>
+    </div>
+
+    <a href="family_en.html">Family</a>
+    <a href="values_en.html">Values</a>
+    <a href="future_en.html">Future</a>
+
+    <div class="dropdown">
+        <a href="about_en.html" class="dropbtn">About Us</a>
+        <div class="dropdown-content">
+            <a href="notes_en.html">Group Notes</a>
+            <a href="team_en.html">Our Team</a>
+        </div>
+    </div>
+    <a href="data_en.html">Data Source</a>
+
+    <a href="index.html" style="margin-left: 20px; color: #ccac82; font-weight: bold;">中文版</a>
+</nav>
+
+    <div class="container">
+        <h1>Family Background and Life Turning Points</h1>
+
+        <section>
+            <p>Chi Wen-Hao was born into a wealthy and stable family. During his childhood, he lived in comfort: household help was available, relatives and friends visited often, and praise and affirmation were part of everyday life. Growing up in such an environment, wealth was not a ‘goal to pursue’ but an unquestioned part of daily life. It shaped his early view of the world: life seemed naturally stable and smooth.</p>
+            
+            <p>However, this perception was completely shattered when he was twelve years old.</p>
+
+            <div class="image-frame">
+                <img src="images/family_01.jpg" alt="Childhood with nanny">
+                <p class="caption">Chi Wen-Hao's childhood photo with his nanny, Qiu Jinyuan</p>
+            </div>
+
+            <p>In 1960, when he was forty-four, his father suffered a sudden stroke and collapsed. Within a short period, the originally large-scale enterprise rapidly disintegrated, and the family's economic foundation and social status collapsed simultaneously. For twelve-year-old Chi Wen-Hao, it was a violent rupture—an abrupt fall from security into uncertainty, from the familiar into the unknown. The family structure changed, the lifestyle was reversed, and the sense of security disappeared overnight.</p>
+
+            <div class="image-frame">
+                <img src="images/family_02.jpg" alt="Formal outing with family">
+                <p class="caption">After starting his business, Chi Wen-Hao rarely went on outings with his family; on holidays, he was often still dressed formally. From left to right: Chi Wen-Hao, his mother, and his eldest brother</p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Family Support</h3>
+            <p>This change forced him to realize one thing early on: <strong>the world will not guarantee that you can continue to have something in the future just because you once had it.</strong></p>
+            
+            <p>After the family’s downturn, Chi Wen-Hao began to feel a profound gap between himself and the world around him. The past enthusiasm and closeness were gradually replaced by alienation and reality; schooling, life, and future directions were all shrouded in uncertainty.The family no longer had resources or protection to rely on, and every choice had to be made with practical constraints in mind.</p>
+            <p>Despite successfully passing the Taipei Joint Entrance Exam and getting into Taipei Municipal Song Shan Senior High School of Commerce, he couldn't afford the tuition due to his family's financial situation. This path, once seen as a way to secure a foothold, ultimately could not be continued. This wasn't due to a lack of ability, but rather the limitations of reality, where hard work doesn't always immediately pay off.</p>
+
+            <div class="image-frame">
+                <img src="images/family_03.jpg" alt="Family at airport">
+                <p class="caption">Before traveling to the United States for business and before the eldest son, Cheng-Wei, left to study in Australia, the family of four took a photo at the airport. From left to right: the second son, his wife, Chi Wen-Hao, and the eldest son.</p>
+            </div>
+
+            <p>Finally, with the help of his aunt, he entered Tamkang High School. This choice was not a fallback, but an opportunity to regain his footing in reality, and it became another important starting line in his life.</p>
+            <p>To stay in school, working while studying was no longer a choice—it was the only way forward. For most peers, the student period is still a stage of being cared for and arranged; but for Chi Wen-Hao, those years meant being both a student and a breadwinner for the family.</p>
+            <div class="image-frame">
+                <img src="images/family_04.jpg" alt="Fujian Factory Visit">
+                <p class="caption">Chi Wen-Hao and his wife, Liu Gan-Gan, went to mainland China and took a group photo with the purchasing representative outside the Nan Jing factory in Fujian. From left to right in the picture: purchasing representative, Chi Wen-Hao, wife Liu Gan-Gan</p>
+            </div>
+
+            <p>During the most difficult period for the family, his aunt and uncle, Lei Mao-Lin, became important pillars for him. His aunt introduced him to a job as a caddie at the old Tamsui golf course, where he could earn 50 yuan a day, which roughly equivalent to about two thousand yuan in today’s value. This job not only provided practical support for his school life, but also symbolized something essential: in adversity, someone may reach out a hand, but you still have to stand up on your own.</p>
+            <p>This experience made Chi Wen-Hao understand the meaning of responsibility, labor and independence earlier than his peers, and also laid the foundation for his character of not easily retreating when facing risks in the future.</p>
+        </section>
+
+        <section>
+            <h2>The Strength of Marriage</h2>
+            <p>After entering society and trying to start a business, Chi Wen-Hao's life did not immediately become stable. In the stage where his career had not yet taken shape and the future was full of uncertainty, his wife, Liu Gan-Gan, always accompanied him. Facing the difficulties and multiple crises in the early stages of entrepreneurship, she did not complain or waver, but chose to fully support his decision and become his most steadfast and reliable support.</p>
+
+            <div class="image-frame">
+                <img src="images/family_05.jpg" alt="Family Outing">
+                <p class="caption">Photos of outings with family</p>
+            </div>
+
+            <div class="image-frame">
+                <img src="images/family_06.jpg" alt="Japan Lions Club Visit">
+                <p class="caption">In 1993, Chi Wen-Hao and his wife led the Southwest Lions Club to visit the sister club of the Osaka Lions Club in Japan. They were treated to a ferry trip around the Kansai Port as shown in the picture.</p>
+            </div>
+
+            <p>Chi Wen-Hao is also deeply grateful for the perseverance inherited from his parents. For him, family is not just an emotional support, but a source of strength that gives people the courage to take risks and make long-term investment decisions. It is in a relationship of being understood and trusted that he has been able to get through the troughs time and time again.</p>
+
+            <div class="image-frame">
+                <img src="images/family_07.png" alt="With Hiroshi Nishikawa">
+                <p class="caption">Pictured with Hiroshi Nishikawa, a member of the Lions Club of Osaka Port, Japan. From left to right: Hiroshi Nishikawa, Chi Wen-Hao, and his wife.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Tamkang High School CyberFair Team</p>
+    </footer>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-title-row">
+                <h3>關於我們 About Us</h3>
+                <div class="main-logo-container">
+                    <img src="images/home_06.jpg" alt="TMSSOCIAL STUDIO" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="zh">我們是一群淡江高中的學生，也有專業的師長幫忙。我們重視誠懇、合作與持續學習，並在研究過程中不斷培養解決問題的能力。</p>
+                <p class="en">We are a group of students from Tamkang High School, supported by experienced teachers who guide our work. We value sincerity, collaboration, and continuous learning, and through our research process we constantly develop our ability to solve problems.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-title-row">
+                <h3>紀文豪理事長 President Wen-Hao Chi</h3>
+                </div>
+            <div class="intro-content">
+                <p class="zh">紀文豪先生是一位傑出的企業家與社會實踐者，秉持著「五心四能」的創業精神，在事業成功的同時，更致力於宗親文化與社會公益。他的回憶錄《荒蕪與播種》記錄了其不畏艱難、開拓進取的人生哲學。</p>
+                <p class="en">Mr. Wen-Hao Chi is an outstanding entrepreneur. His memoir reflects a philosophy of perseverance and progress.</p>
+            </div>
+            <div class="cyberfair-container">
+    <a href="http://globalschoolnet.org/gsncf/index.cfm" target="_blank">
+        <img src="images/home_5.jpg" alt="Cyberfair Logo" class="cyber-logo">
+    </a>
+</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

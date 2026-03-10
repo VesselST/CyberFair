@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Our Team | About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+/* --- 1. 全域變數與基礎設定 --- */
+:root {
+    --v-brown: #3d2b1f; /* 核心深棕色 */
+    --v-gold: #ccac82;  /* 核心金色 */
+    --paper: #fdfaf5;   /* 羊皮紙底色 */
+    --text: #4a4a4a;    /* 內文深灰色 */
+}
+
+body, html { 
+    margin: 0; padding: 0; 
+    overflow-x: hidden; 
+    width: 100%;
+    background-color: var(--paper); /* 全域背景採用羊皮紙色 */
+    color: var(--text);
+}
+
+/* --- 2. 導覽列 (Nav) 極致加厚與 Logo --- */
+nav {
+    background: var(--v-brown);
+    padding: 3.5rem 2rem !important; /* 深度加厚大氣感 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-logo-box {
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand-img {
+    height: 100px; /* 大尺寸 Logo */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 1.1rem !important;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+nav a:hover { color: var(--v-gold); }
+
+.dropdown-content { top: 100%; }
+
+/* --- 3. 頁面通用元件 (動機盒、流程) --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.motivation-box {
+    background-color: #fff;
+    border: 2px double var(--v-brown);
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.motivation-box::before {
+    content: "Research Motivation";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: var(--v-brown);
+}
+
+/* --- 4. 人文質感成員介紹卡片 (Member Block) --- */
+.member-block {
+    background-color: #fdfaf5; /* 溫潤米色底 */
+    border: 1px solid #e3d9c6;
+    padding: 45px;
+    margin-bottom: 50px;
+    position: relative;
+    border-radius: 4px;
+    /* 實心偏位陰影風格 */
+    box-shadow: 8px 8px 0px rgba(61, 43, 31, 0.05); 
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.member-block:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 15px 15px 25px rgba(61, 43, 31, 0.1);
+    border-color: var(--v-gold);
+}
+
+/* 左上角裝飾金角 */
+.member-block::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 45px; height: 45px;
+    background: linear-gradient(135deg, var(--v-gold) 0%, var(--v-gold) 40%, transparent 40%);
+    opacity: 0.5;
+}
+
+.member-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 25px;
+}
+
+.member-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--v-gold);
+    padding: 6px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.member-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--v-brown);
+    letter-spacing: 2px;
+}
+
+.member-intro p {
+    text-align: justify;
+    line-height: 2; /* 提高閱讀舒適度 */
+    color: #444;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/* --- 5. 頁尾與版權宣告 (Footer) --- */
+.site-footer {
+    background-color: #2b1d14;
+    color: var(--v-gold);
+    padding: 60px 0;
+    border-top: 2px solid var(--v-gold);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.footer-text p, .intro-content p {
+    color: #d1c4b9 !important; /* 淺棕灰色說明文字 */
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* 最底部版權宣告 (淺色) */
+footer p { 
+    color: #999 !important; 
+    font-size: 0.8rem; 
+    text-align: center; 
+    margin: 30px 0; 
+}
+
+/* --- 6. 核心響應式 (手機版) --- */
+@media (max-width: 768px) {
+    /* 選單加厚調整 */
+    nav {
+        padding: 2rem 15px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .nav-brand-img { height: 70px; margin-right: 0; width: 100%; object-fit: contain; }
+    nav a { font-size: 0.8rem !important; padding: 5px; }
+
+    /* Container 保護，確保文字不被切掉 */
+    .container {
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 成員卡片手機版 */
+    .member-block { padding: 30px 20px; box-shadow: 5px 5px 0px rgba(61, 43, 31, 0.05); }
+    .member-header { gap: 15px; border-bottom: none; }
+    .member-photo { width: 80px; height: 80px; }
+    .member-name { font-size: 1.4rem; }
+
+    /* 照片負邊距滿版 (含精緻白框) */
+    .image-frame {
+        width: 100vw !important;
+        margin-left: -20px !important;
+        position: relative;
+        left: 0;
+        padding: 10px !important;
+        background: white !important;
+        border-top: 1px solid #eee !important;
+        border-bottom: 1px solid #eee !important;
+        box-sizing: border-box !important;
+    }
+    .image-frame img { width: 100% !important; height: auto !important; display: block; }
+
+    /* YouTube 影片響應式 */
+    iframe { width: 100% !important; aspect-ratio: 16 / 9; }
+
+    /* Footer 堆疊 */
+    .footer-container { flex-direction: column; gap: 30px; text-align: center; }
+    .cyberfair-container { justify-content: center; }
+}
+</style>
+</head>
+<body>
+    <nav>
+        <img src="images/header_01.png" alt="Logo" class="nav-brand-img">
+    <a href="index.html">首頁</a>
+    <a href="life.html">個人生平</a>
+    
+    <div class="dropdown">
+        <a href="career.html" class="dropbtn">事業</a>
+        <div class="dropdown-content">
+            <a href="adversity.html">走出變故</a>
+            <a href="low-points.html">攀越低谷</a>
+            <a href="shoes-trend.html">溜冰鞋潮流</a>
+            <a href="scaling.html">國際化與規模化</a>
+        </div>
+    </div>
+
+    <a href="family.html">家庭</a>
+    <a href="values.html">思想品質</a>
+    <a href="future.html">未來展望</a>
+
+    <div class="dropdown">
+        <a href="about.html" class="dropbtn">關於我們</a>
+        <div class="dropdown-content">
+            <a href="notes.html">小組記事</a>
+            <a href="team.html">團隊</a>
+        </div>
+    </div>
+    <a href="data.html">資料來源</a>
+
+    <a href="index_en.html" style="margin-left: 20px; color: #ccac82; font-weight: bold;">English</a>
+</nav>
+
+    <div class="container">
+        <h1 style="text-align: center; margin-top: 40px;">團隊</h1>
+
+        <div class="member-block">
+    <div class="member-header">
+        <div class="member-photo-box">
+            <img src="images/team_lpc.jpg" alt="李鵬成" class="member-photo">
+        </div>
+        <div class="member-info">
+            <span class="member-name">李鵬成</span>
+        </div>
+    </div>
+
+    <div class="member-intro">
+        <p>第一次上蘇拔（蘇文魁）的選修課時，初次聽到了網界博覽會這個比賽，需要的是架設網站，感覺挺困難的，而大家經過深思熟慮後，決定參加。雖然我沒在架設網站領域大展身手，但是至少在蒐集資料、書寫一部分網站內容，比較沒什麼問題。有幾次是去拜訪紀文豪理事長，透過訪談中我了解到了一些基本的採訪觀念，例如，一定要知悉主題是什麼，先想過要問什麼問題，對方會怎麼回答，如果不是所想像的，就是隨機應變，其中包含了些趣味性。理事長也給了句話：能忍、能讓、能教、能等，強調堅忍、包容、溝通，正是我缺少的人生經驗。前所未有的比賽經驗，如果還有參加的機會，我想我會再去參加。</p>
+    </div>
+</div>
+
+        
+            <div class="member-block">
+                <div class="member-header">
+                    <div class="member-photo-box">
+                        <img src="images/team_ljy.jpg" alt="林資元" class="member-photo">
+            </div>
+            <div class="member-info">
+                <span class="member-name">林資元</span>
+            </div>
+        </div>
+        <div class="member-intro">
+            <p>在這次的網界博覽會中，我負責資料搜集與整理，並且參與了網站內容的撰寫。透過這次的比賽，我學到了如何進行有效的資料搜集與整理，並且體會到團隊合作的重要性。每個成員都貢獻了自己的專長，讓我們能夠順利完成這次的專題。</p>
+        </div>
+    </div>
+        
+    <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_lh.jpg" alt="林懷恩" class="member-photo">
+            </div>
+            <div class="member-info">
+            <span class="member-name">林懷恩</span>
+            </div>
+        </div>
+        <div class="member-intro">
+            <p>我在本次活動中擔任組長，負責整理資料、影片剪輯、網站調整以及整體進度安排。在活動過程中，我學到了採訪的經驗、團隊合作的秘訣和資料搜集的方法。</p>
+        </div>
+    </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_hsy.jpg" alt="華紹宇" class="member-photo">
+            </div>
+            <div class="member-info">
+            <span class="member-name">華紹宇</span>
+            </div>
+        </div>
+        <div class="member-intro">
+            <p>我在網界博覽會擔任了攝影這個部分，我在網界的比賽當中，認識了紀文豪，他的人生豐富。在這個比賽我更會使用攝影道具，也更認識紀文豪的一生。</p>
+        </div>
+    </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_ycs.jpg" alt="楊承憲" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">楊承憲</span>
+            </div>
+        </div>
+        <div class="member-intro">
+            <p>很高興能參加這次的網界博覽會。特別感謝蘇爸願意相信我們，讓我們有機會接下棒子，延續上一屆的主題，繼續製作關於淡江校友會會長——紀文豪先生的專題。在活動開始前，我對紀會長其實一無所知；但透過這次的深入研究，我不僅了解了他精彩的一生，更深深被他的處世理念所感動</p>
+        </div>
+    </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_lcy.jpg" alt="雷群揚" class="member-photo">
+                </div>
+
+                <div class="member-info">
+            <span class="member-name">雷群揚</span>
+            </div>
+        </div>
+            <p>我在本次的國際網界博覽會擔任剪輯的職位，我們在紀文豪身上學到了很多在社會上做人處事的態度及辦法，因此我將把他所說的經歷經驗剪出紀錄片，在網界博覽會上我也學到很多與組員之間的溝通如何更好，並與組員一起共同完成此次專案。</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_jwm.jpg" alt="蔣維珉" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">蔣維珉</span>
+            </div>
+        </div>
+            <p>很開心今年能再次參與網屆博覽會，這次選擇以大老闆-紀文豪作為研究對象，是因為他在產業中的影響力與決策思維，深深影響著社會與經濟的走向。我們希望透過資料蒐集與整理，了解他成功背後的歷程、價值觀與經營理念，並從中學習面對挑戰時的態度與眼界，讓研究不只是完成一項比賽，而是成為自我成長與拓展視野的重要過程。</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_lyl.jpg" alt="劉苡樂" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">劉苡樂</span>
+            </div>
+        </div>
+            <p>第一次參加網際博覽會，負責網頁製作，透過這個比賽瞭解到了許多關於紀文豪理事長的故事以及他的人生還有許多有趣的經歷，同時也增進了我在架設網站的技術。</p>
+        </div>
+
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_pys.jpg" alt="彭薏軒" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">彭薏軒</span>
+            </div>
+        </div>
+            <p>第一次聽到網界博覽會這個比賽時，腦中不自覺地幻想著網路世界的奧秘，在過程中採訪紀文豪理事長，聽著他敘述著自己的人生經驗，間接體會到了人生的起起伏伏與樂趣。透過這個機會，也有了不同的體會，我更加把握在生活中所看見的事物、在乎的人們，製造著屬於自己的回憶錄。</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_hys.jpg" alt="黃苡瑄" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">黃苡瑄</span>
+            </div>
+        </div>
+            <p>在本次網界博覽會中，我負責梳理紀文豪理事長的個人品德與座右銘，深受其「能讓、能忍、能講、能等」座右銘的啟發。這份跨越時代的智慧，不僅是理事長在校友會與企業領導角色間游刃有餘的核心，更將品牌理念與人生信念高度契合，成為年輕世代值得效法的處世範本。透過這次研究，我深刻領悟到成功的關鍵在於對原則的堅守與困境中的從容，我將帶著這份感激與領悟，轉化為實際行動為團隊貢獻。</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_ysh.jpg" alt="楊世浤" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">楊世浤</span>
+            </div>
+        </div>
+            <p>高一的時候就有淺淺的知道網界博覽會的消息，而高二在蘇爸的帶領下，參加了網界博覽會，在過程中我們了解到了紀文豪理事長的精彩一生，他經歷了大起大落才造就了現在的成功，我們與紀文豪理事長相處下來，讓我第一次深刻的感受到了什麼是忘年之交，在比賽中了我也知道如何觀察平常別人的言行舉止，設計符合他說話方式的問題，也讓我更會整理大量資料。</p>
+        </div>
+
+        <h2>老師</h2>
+        <p>從網站製作初期開始，老師們便給予我們高度的支持與鼓勵，並分享許多過往參與網際博覽會的實務經驗，協助我們少走彎路。同時，也給予我們相當大的製作自由度，讓我們能在過程中充分嘗試、深入學習，真正投入並完成這次的作品。</p>
+        
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_swg.jpg" alt="蘇文魁" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">蘇文魁老師</span>
+            </div>
+        </div>
+            <p>淡江高中老師，在網站製作過程中，提供了大量珍貴的照片資料與紀文豪理事長的背景資訊，並且持續為我們創造與理事長聯繫與交流的機會，讓網站內容能更貼近真實與完整。</p>
+        </div>
+
+        
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_jpd.jpg" alt="江丕得" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">江丕得主任</span>
+            </div>
+        </div>
+            <p>淡江高中教務主任，在整體網站製作與內容編輯上提供了多方面的協助，無論是方向建議或實務支援，都對本專題的完成有很大的幫助。</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_wjj_1.jpg" alt="吳靜潔" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">吳靜潔老師</span>
+            </div>
+        </div>
+            <p>淡江高中教務處老師，於網站各項製作過程中，協助整理與提供相關資料，使內容更加完整，也讓我們在編輯時有更清楚的依據。</p>
+        </div>
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_xln.jpg" alt="徐朗恩" class="member-photo">
+                </div>
+                <div class="member-info">
+            <span class="member-name">徐朗恩學長</span>
+            </div>
+        </div>
+            <p>淡江大學教育科學系，在網站架設與製作過程中，給予我們許多技術層面的指導與協助，幫助我們順利解決實作上遇到的問題，讓網站能夠順利完成。</p>
+        </div>
+    </div>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-title-row">
+                <h3>關於我們 About Us</h3>
+                <div class="main-logo-container">
+                    <img src="images/home_06.jpg" alt="TMSSOCIAL STUDIO" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="zh">我們是一群淡江高中的學生，也有專業的師長幫忙。我們重視誠懇、合作與持續學習，並在研究過程中不斷培養解決問題的能力。</p>
+                <p class="en">We are a group of students from Tamkang High School, supported by experienced teachers who guide our work. We value sincerity, collaboration, and continuous learning, and through our research process we constantly develop our ability to solve problems.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-title-row">
+                <h3>紀文豪理事長 President Wen-Hao Chi</h3>
+                </div>
+            <div class="intro-content">
+                <p class="zh">紀文豪先生是一位傑出的企業家與社會實踐者，秉持著「五心四能」的創業精神，在事業成功的同時，更致力於宗親文化與社會公益。他的回憶錄《荒蕪與播種》記錄了其不畏艱難、開拓進取的人生哲學。</p>
+                <p class="en">Mr. Wen-Hao Chi is an outstanding entrepreneur. His memoir reflects a philosophy of perseverance and progress.</p>
+            </div>
+            <div class="cyberfair-container">
+    <a href="http://globalschoolnet.org/gsncf/index.cfm" target="_blank">
+        <img src="images/home_5.jpg" alt="Cyberfair Logo" class="cyber-logo">
+    </a>
+</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

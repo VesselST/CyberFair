@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Career Overview | WEVER Group</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+:root {
+    --v-brown: #3d2b1f;
+    --v-gold: #ccac82;
+    --paper: #fdfaf5;
+    --text: #4a4a4a;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    background-color: var(--paper);
+    color: var(--text);
+}
+
+nav {
+    background: var(--v-brown);
+    padding: 3.5rem 2rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-logo-box {
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand-img {
+    height: 100px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 1.1rem !important;
+    font-family: 'Playfair Display', serif;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4e342e;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1001;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.career-card {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.career-card h3 {
+    color: var(--v-brown);
+    margin-bottom: 15px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--v-brown);
+    color: #fff !important;
+    text-decoration: none;
+    font-family: 'Playfair Display';
+    font-size: 0.9rem;
+}
+
+.read-more-btn:hover {
+    background-color: var(--v-gold);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.motivation-box {
+    background-color: #fff;
+    border: 2px double var(--v-brown);
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.motivation-box::before {
+    content: "Research Motivation";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: var(--v-brown);
+}
+
+.process-step {
+    border-left: 2px solid var(--v-gold);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.site-footer {
+    background-color: #2b1d14;
+    color: var(--v-gold);
+    padding: 60px 0;
+    border-top: 2px solid var(--v-gold);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.footer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3d2b1f;
+    padding-bottom: 10px;
+}
+
+.footer-title-row h3 {
+    margin: 0;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.footer-text p, .intro-content p {
+    color: #d1c4b9 !important;
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.footer-text p.en {
+    color: #bfae9f !important;
+    font-size: 0.85rem;
+}
+
+.cyberfair-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cyber-logo {
+    height: 60px;
+}
+
+footer p {
+    color: #999 !important;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1.5rem 10px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .nav-brand-img {
+        height: 45px;
+    }
+
+    nav a {
+        font-size: 0.75rem;
+        padding: 5px;
+    }
+
+    .career-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .image-frame {
+        width: 100vw !important;
+        margin-left: -20px !important;
+        position: relative;
+        padding: 8px !important;
+        background: white !important;
+        border-top: 1px solid #eee !important;
+        border-bottom: 1px solid #eee !important;
+        box-sizing: border-box !important;
+    }
+
+    .image-frame img {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+
+    iframe {
+        width: 100% !important;
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-title-row {
+        justify-content: center;
+    }
+
+    .cyberfair-container {
+        justify-content: center;
+    }
+
+    p, h1, h2, h3 {
+        padding: 0 !important;
+    }
+}
+</style>
+</head>
+<body>
+
+    <nav>
+        <img src="images/header_01.png" alt="Logo" class="nav-brand-img">
+    <a href="index.html">首頁</a>
+    <a href="life.html">個人生平</a>
+    
+    <div class="dropdown">
+        <a href="career.html" class="dropbtn">事業</a>
+        <div class="dropdown-content">
+            <a href="adversity.html">走出變故</a>
+            <a href="low-points.html">攀越低谷</a>
+            <a href="shoes-trend.html">溜冰鞋潮流</a>
+            <a href="scaling.html">國際化與規模化</a>
+        </div>
+    </div>
+
+    <a href="family.html">家庭</a>
+    <a href="values.html">思想品質</a>
+    <a href="future.html">未來展望</a>
+
+    <div class="dropdown">
+        <a href="about.html" class="dropbtn">關於我們</a>
+        <div class="dropdown-content">
+            <a href="notes.html">小組記事</a>
+            <a href="team.html">團隊</a>
+        </div>
+    </div>
+    <a href="data.html">資料來源</a>
+
+    <a href="index_en.html" style="margin-left: 20px; color: #ccac82; font-weight: bold;">English</a>
+</nav>
+
+    <div class="container">
+        <div class="intro-section">
+            <h1>職業生涯</h1>
+            <p>
+                從迪化街熙攘的商業貿易到WEVER集團的全球擴展，紀文豪董事長的職業生涯是堅韌、誠信和遠見領導力的最佳體現。下面一起探索他職業生涯中四個具有代表性的篇章。
+            </p>
+        </div>
+
+        <div class="career-grid">
+            <div class="career-card">
+                <h3>走出變故</h3>
+                <p>家族企業早期的奮鬥以及從「農商立來」牌匾中學到的教訓。</p>
+                <a href="adversity.html" class="read-more-btn">前往<strong>走出變故</strong></a>
+            </div>
+
+            <div class="career-card">
+                <h3>攀越低谷</h3>
+                <p>退役後從零開始，應對市場波動和個人挫折。</p>
+                <a href="low-points.html" class="read-more-btn">前往<strong>攀越低谷</strong></a>
+            </div>
+
+            <div class="career-card">
+                <h3>溜冰鞋潮流</h3>
+                <p>抓住歷史性機遇，以創新的品牌引領全球溜冰市場。</p>
+                <a href="shoes-trend.html" class="read-more-btn">前往<strong>溜冰鞋潮流</strong></a>
+            </div>
+
+            <div class="career-card">
+                <h3>國際化與規模化</h3>
+                <p>在各個大陸拓展視野，並多元化發展成為跨產業的全球企業。</p>
+                <a href="scaling.html" class="read-more-btn">前往<strong>國際化與規模化</strong></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Tamkang High School CyberFair Team</p>
+    </footer>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-title-row">
+                <h3>關於我們 About Us</h3>
+                <div class="main-logo-container">
+                    <img src="images/home_06.jpg" alt="TMSSOCIAL STUDIO" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="zh">我們是一群淡江高中的學生，也有專業的師長幫忙。我們重視誠懇、合作與持續學習，並在研究過程中不斷培養解決問題的能力。</p>
+                <p class="en">We are a group of students from Tamkang High School, supported by experienced teachers who guide our work. We value sincerity, collaboration, and continuous learning, and through our research process we constantly develop our ability to solve problems.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-title-row">
+                <h3>紀文豪理事長 President Wen-Hao Chi</h3>
+                </div>
+            <div class="intro-content">
+                <p class="zh">紀文豪先生是一位傑出的企業家與社會實踐者，秉持著「五心四能」的創業精神，在事業成功的同時，更致力於宗親文化與社會公益。他的回憶錄《荒蕪與播種》記錄了其不畏艱難、開拓進取的人生哲學。</p>
+                <p class="en">Mr. Wen-Hao Chi is an outstanding entrepreneur. His memoir reflects a philosophy of perseverance and progress.</p>
+            </div>
+            <div class="cyberfair-container">
+    <a href="http://globalschoolnet.org/gsncf/index.cfm" target="_blank">
+        <img src="images/home_5.jpg" alt="Cyberfair Logo" class="cyber-logo">
+    </a>
+</div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

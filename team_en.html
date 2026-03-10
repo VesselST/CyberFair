@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Our Team | About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+/* --- 1. 全域變數與基礎設定 --- */
+:root {
+    --v-brown: #3d2b1f; /* 核心深棕色 */
+    --v-gold: #ccac82;  /* 核心金色 */
+    --paper: #fdfaf5;   /* 羊皮紙底色 */
+    --text: #4a4a4a;    /* 內文深灰色 */
+}
+
+body, html { 
+    margin: 0; padding: 0; 
+    overflow-x: hidden; 
+    width: 100%;
+    background-color: var(--paper); /* 全域背景採用羊皮紙色 */
+    color: var(--text);
+}
+
+/* --- 2. 導覽列 (Nav) 極致加厚與 Logo --- */
+nav {
+    background: var(--v-brown);
+    /* 增加上下 padding 達成加厚 (原本可能是 1.2rem) */
+    padding: 3.5rem 2rem !important; 
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 垂直居中 */
+    gap: 25px;
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap; /* 手機版自動換行 */
+}
+
+/* 圖片容器 */
+.nav-logo-box {
+    margin-right: 35px; /* 與第一個連結的距離 */
+    display: flex;
+    align-items: center;
+}
+
+/* 圖片本身大小控制 */
+.nav-brand-img {
+    height: 100px; /* 這裡調整你要的圖片高度，會直接撐開 nav */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); /* 增加一點立體感 */
+}
+
+/* 確保下拉選單在加厚後的 nav 依然對齊正確 */
+.dropdown-content {
+    top: 100%; 
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1.5rem 10px !important; /* 手機版稍微縮減一點點厚度 */
+        gap: 12px;
+    }
+    .nav-brand-img {
+        height: 45px; /* 手機版圖片縮小一點 */
+    }
+}
+
+nav a:hover { color: var(--v-gold); }
+
+.dropdown-content { top: 100%; }
+
+/* --- 3. 頁面通用元件 (動機盒、流程) --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.motivation-box {
+    background-color: #fff;
+    border: 2px double var(--v-brown);
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.motivation-box::before {
+    content: "Research Motivation";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: var(--v-brown);
+}
+
+/* --- 4. 人文質感成員介紹卡片 (Member Block) --- */
+.member-block {
+    background-color: #fdfaf5; /* 溫潤米色底 */
+    border: 1px solid #e3d9c6;
+    padding: 45px;
+    margin-bottom: 50px;
+    position: relative;
+    border-radius: 4px;
+    /* 實心偏位陰影風格 */
+    box-shadow: 8px 8px 0px rgba(61, 43, 31, 0.05); 
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.member-block:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 15px 15px 25px rgba(61, 43, 31, 0.1);
+    border-color: var(--v-gold);
+}
+
+/* 左上角裝飾金角 */
+.member-block::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 45px; height: 45px;
+    background: linear-gradient(135deg, var(--v-gold) 0%, var(--v-gold) 40%, transparent 40%);
+    opacity: 0.5;
+}
+
+.member-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 25px;
+}
+
+.member-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--v-gold);
+    padding: 6px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.member-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--v-brown);
+    letter-spacing: 2px;
+}
+
+.member-intro p {
+    text-align: justify;
+    line-height: 2; /* 提高閱讀舒適度 */
+    color: #444;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/* --- 5. 頁尾與版權宣告 (Footer) --- */
+.site-footer {
+    background-color: #2b1d14;
+    color: var(--v-gold);
+    padding: 60px 0;
+    border-top: 2px solid var(--v-gold);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.footer-text p, .intro-content p {
+    color: #d1c4b9 !important; /* 淺棕灰色說明文字 */
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* 最底部版權宣告 (淺色) */
+footer p { 
+    color: #999 !important; 
+    font-size: 0.8rem; 
+    text-align: center; 
+    margin: 30px 0; 
+}
+
+/* --- 6. 核心響應式 (手機版) --- */
+@media (max-width: 768px) {
+    /* 選單加厚調整 */
+    nav {
+        padding: 2rem 15px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .nav-brand-img { height: 70px; margin-right: 0; width: 100%; object-fit: contain; }
+    nav a { font-size: 0.8rem !important; padding: 5px; }
+
+    /* Container 保護，確保文字不被切掉 */
+    .container {
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 成員卡片手機版 */
+    .member-block { padding: 30px 20px; box-shadow: 5px 5px 0px rgba(61, 43, 31, 0.05); }
+    .member-header { gap: 15px; border-bottom: none; }
+    .member-photo { width: 80px; height: 80px; }
+    .member-name { font-size: 1.4rem; }
+
+    /* 照片負邊距滿版 (含精緻白框) */
+    .image-frame {
+        width: 100vw !important;
+        margin-left: -20px !important;
+        position: relative;
+        left: 0;
+        padding: 10px !important;
+        background: white !important;
+        border-top: 1px solid #eee !important;
+        border-bottom: 1px solid #eee !important;
+        box-sizing: border-box !important;
+    }
+    .image-frame img { width: 100% !important; height: auto !important; display: block; }
+
+    /* YouTube 影片響應式 */
+    iframe { width: 100% !important; aspect-ratio: 16 / 9; }
+
+    /* Footer 堆疊 */
+    .footer-container { flex-direction: column; gap: 30px; text-align: center; }
+    .cyberfair-container { justify-content: center; }
+}
+</style>
+</head>
+<body>
+    <nav>
+        <img src="images/header_01.png" alt="Logo" class="nav-brand-img">
+    <a href="index_en.html">Home</a>
+    <a href="life_en.html">Life</a>
+    
+    <div class="dropdown">
+        <a href="career_en.html" class="dropbtn">Career</a>
+        <div class="dropdown-content">
+            <a href="adversity_en.html">Overcoming Adversity</a>
+            <a href="low_points_en.html">Overcoming the Low Points</a>
+            <a href="shose-trend_en.html">Roller Skating Shoes Trend</a>
+            <a href="scaling_en.html">Internationalization and Scaling</a>
+        </div>
+    </div>
+
+    <a href="family_en.html">Family</a>
+    <a href="values_en.html">Values</a>
+    <a href="future_en.html">Future</a>
+
+    <div class="dropdown">
+        <a href="about_en.html" class="dropbtn">About Us</a>
+        <div class="dropdown-content">
+            <a href="notes_en.html">Group Notes</a>
+            <a href="team_en.html">Our Team</a>
+        </div>
+    </div>
+    <a href="data_en.html">Data Source</a>
+
+    <a href="index.html" style="margin-left: 20px; color: #ccac82; font-weight: bold;">中文版</a>
+</nav>
+
+    <div class="container">
+        <h1 style="text-align: center; margin-top: 40px;">Our Team</h1>
+
+        <h2>Students</h2>
+
+        <div class="member-block">
+    <div class="member-header">
+        <div class="member-photo-box">
+            <img src="images/team_lpc.jpg" alt="李鵬成" class="member-photo">
+        </div>
+        <div class="member-info">
+            <span class="member-name">李鵬成 Li Peng-Cheng</span>
+        </div>
+    </div>
+        <p>When I took Mr. Su Wen-Kui’s elective course for the first time, I learned about the International Schools CyberFair competition. We would need to build a website, which felt quite challenging. After careful discussion, we decided to participate. Although I did not contribute much to the website-building side, I was able to help with collecting information and writing part of the website content. On several occasions, we visited Chi Wen-Hao, the President of the Alumni Association. Through the interviews, I learned some basic reporting principles—for example, you must be clear about the topic, think through what questions to ask in advance, anticipate how the other person might respond, and, if the response is different from what you expected, adapt on the spot. That process also included some fun and unexpected moments. The chairman also shared a line with us: “Be able to yield, be able to endure, be able to teach, be able to wait” emphasizing perseverance, tolerance, and communication—exactly the life experience I still lack. This was an unprecedented competition experience for me. If I have the chance to participate again, I would like to do it again.
+</p>
+    </div>
+
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_ljy.jpg" alt="林資元" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">林資元 Lin Zi-Yuan</span>
+                </div>
+            </div>
+            <p>Being able to take part in the “International Schools CyberFair” was truly special. I am also very grateful for the support of our advising teacher, Mr. Su, who helped us organize and preserve Mr. Chi Wen-Hao’s story in a complete way. During our research, we explored Tamsui’s past together through Mr. Chi’s experiences and found that it differs greatly from the present. This made us realize how important it is to document history. From organizing materials to conducting interviews and discussing the website, every step required teamwork, and I learned new skills and methods along the way. I hope that through our website, everyone can not only get to know Mr. Chi Wen-Hao, but also feel the warmth and human touch of Tamsui.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_lh.jpg" alt="林懷恩" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">林懷恩 Lin Huai-En</span>
+                </div>
+            </div>
+            <p>In this project, I served as the team leader. I was responsible for organizing materials, editing videos, adjusting the website, and managing the overall schedule. Throughout the process, I gained interviewing experience, learned practical strategies for teamwork, and improved my methods for collecting and organizing information.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_hsy.jpg" alt="華紹宇" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">華紹宇 Hua Shao-Yu</span>
+                </div>
+            </div>
+            <p>In the International Schools CyberFair project, I was responsible for photography. Through the competition, I came to know Chairman Chi Wen-Hao and learned that his life story is rich and remarkable. I also became more skilled at using photography equipment and gained a deeper understanding of his life.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_ycs.jpg" alt="楊承憲" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">楊承憲 Yang Cheng-xian</span>
+                    
+                </div>
+            </div>
+            <p>I am very pleased to participate in this Web Expo. I am especially grateful to Mr. Su for trusting us and giving us the opportunity to take over, continue the theme from the previous session, and keep producing a special feature about Mr. Ji Wenhao, the president of the Tamkang Alumni Association. Before this event, I actually knew nothing about President Ji; but through this in-depth research, I not only learned about his remarkable life but was also deeply moved by his philosophy on life.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_lcy.jpg" alt="雷群揚" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">雷群揚 Lei Qun-Yang</span>
+                </div>
+            </div>
+            <p>In this International Schools CyberFair project, I served as an editor. From Chairman Chi Wen-Hao, we learned many practical attitudes and approaches for navigating society and handling relationships. I plan to turn what he shared—his experiences and lessons—into a documentary through editing. At the same time, I learned a great deal about how to communicate more effectively with my teammates. Together, we successfully completed this project.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_jwm.jpg" alt="蔣維珉" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">蔣維珉 Jiang Wei-Min</span>
+                </div>
+            </div>
+            <p>I am very happy to participate in the CyberFair again this year. We chose the “big boss,” Chairman Chi Wen-Hao, as our research subject because his influence in industry and his decision-making mindset have profoundly shaped the direction of society and the economy. Through collecting and organizing information, we hope to understand the journey, values, and management philosophy behind his success. More importantly, we want to learn from his perspective and attitude when facing challenges, so that this research becomes not just a competition entry, but also an important process of personal growth and expanding our horizons.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_lyl.jpg" alt="劉苡樂" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">劉苡樂 Liu Yi-Le</span>
+                </div>
+            </div>
+            <p>This was my first time participating in the CyberFair, and I was responsible for website production. Through the competition, I learned many stories about Chairman Chi Wen-Hao—his life and many interesting experiences—and I also improved my technical skills in building a website.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_pys.jpg" alt="彭薏軒" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">彭薏軒 Peng Yi-Xuan</span>
+                </div>
+            </div>
+            <p>When I first heard about the CyberFair competition, I could not help imagining the mysteries of the online world. During the process, we interviewed Chairman Chi Wen-Hao and listened as he described his life experiences. Indirectly, I came to understand the ups and downs of life, as well as its unique joys. This opportunity also gave me a different perspective. I now cherish more deeply what I see in daily life and the people I care about, and I am creating memories that belong to my own “life record.”</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_hys.jpg" alt="黃苡瑄" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">黃苡瑄 Huang Yi-Hsuan</span>
+                </div>
+            </div>
+            <p>In this CyberFair project, I was responsible for organizing Chairman Chi Wen-Hao’s personal character strengths and his motto. I was deeply inspired by his motto: “Be able to yield, be able to endure, be able to teach, be able to wait.” This wisdom, which transcends generations, is not only the core reason he can move smoothly between leadership roles in both the alumni association and the business world; it also aligns closely with his brand philosophy and life beliefs, becoming a model of conduct worth learning from for younger generations. Through this research, I have come to understand that the key to success lies in holding firmly to one’s principles and remaining composed in difficult circumstances. With gratitude and insight, I will translate what I learned into concrete actions and contribute to our team.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_ysh.jpg" alt="楊世浤" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">楊世浤 Yang Shi-Hong</span>
+                </div>
+            </div>
+            <p>When I was in the first year of high school, I had a shallow understanding of the news about the Internet Expo. In the second year, under the guidance of Su Dad, I participated in the Internet Expo. During the process, we learned about the wonderful life of Chairman Ji Wenhao. He experienced great ups and downs that led to his current success. Spending time with Chairman Ji Wenhao allowed me to deeply feel for the first time what a friendship across generations is. During the competition, I also learned how to observe other people's usual words and actions, design questions that match their way of speaking, and it also made me better at organizing large amounts of information.</p>
+        </div>
+
+        <h2>Teachers</h2>
+        <p>From the early stages of website development, our teachers provided strong support and encouragement. They shared practical experience from past participation in the CyberFair, helping us avoid unnecessary trial-and-error. At the same time, they gave us substantial creative freedom, allowing us to experiment fully, learn deeply, and genuinely commit to completing this project.</p>
+        
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_swg.jpg" alt="蘇文魁老師" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">蘇文魁老師 Mr. Su Wen-Kui</span>
+                </div>
+            </div>
+            <p>A teacher at Tamkang High School, Mr. Su provided a large collection of valuable photographs and background information about Chairman Chi Wen-Hao throughout the website production process. He also continuously created opportunities for us to connect and communicate with the chairman, making the website content more authentic and complete.</p>
+        </div>
+
+        
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_jpd.jpg" alt="江丕得主任" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">江丕得主任 Director Jiang Pi-de</span>
+                </div>
+            </div>
+            <p>As the Academic Director of Tamkang High School, Director Jiang offered wide-ranging support in overall website production and content editing. Whether through strategic direction or hands-on assistance, his contributions were significant to the completion of this project.</p>
+        </div>
+
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_wjj_1.jpg" alt="吳靜潔老師" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">吳靜潔老師 Mr. Wu Jing-Jie</span>
+                </div>
+            </div>
+            <p>A staff member of the Academic Affairs Office at Tamkang High School, Mr. Wu assisted in organizing and providing relevant materials throughout the production process. His support made the content more complete and gave us a clearer foundation for editing.</p>
+        </div>
+        <div class="member-block">
+            <div class="member-header">
+                <div class="member-photo-box">
+                    <img src="images/team_xln.jpg" alt="徐朗恩學長" class="member-photo">
+                </div>
+                <div class="member-info">
+                    <span class="member-name">徐朗恩學長 Xu Lang-En (Alumnus)</span>
+                </div>
+            </div>
+            <p>From the Department of Educational Science at Tamkang University, Mr. Xu provided extensive technical guidance and support during the website setup and production process. His help enabled us to resolve implementation issues smoothly and complete the website successfully.</p>
+        </div>
+    </div>
+    
+    
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-title-row">
+                <h3>關於我們 About Us</h3>
+                <div class="main-logo-container">
+                    <img src="images/home_06.jpg" alt="TMSSOCIAL STUDIO" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="zh">我們是一群淡江高中的學生，也有專業的師長幫忙。我們重視誠懇、合作與持續學習，並在研究過程中不斷培養解決問題的能力。</p>
+                <p class="en">We are a group of students from Tamkang High School, supported by experienced teachers who guide our work. We value sincerity, collaboration, and continuous learning, and through our research process we constantly develop our ability to solve problems.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-title-row">
+                <h3>紀文豪理事長 President Wen-Hao Chi</h3>
+                </div>
+            <div class="intro-content">
+                <p class="zh">紀文豪先生是一位傑出的企業家與社會實踐者，秉持著「五心四能」的創業精神，在事業成功的同時，更致力於宗親文化與社會公益。他的回憶錄《荒蕪與播種》記錄了其不畏艱難、開拓進取的人生哲學。</p>
+                <p class="en">Mr. Wen-Hao Chi is an outstanding entrepreneur. His memoir reflects a philosophy of perseverance and progress.</p>
+            </div>
+            <div class="cyberfair-container">
+    <a href="http://globalschoolnet.org/gsncf/index.cfm" target="_blank">
+        <img src="images/home_5.jpg" alt="Cyberfair Logo" class="cyber-logo">
+    </a>
+</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

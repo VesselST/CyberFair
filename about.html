@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Our Team | About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root {
+    --v-brown: #3d2b1f;
+    --v-gold: #ccac82;
+    --paper: #fdfaf5;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--v-brown);
+    padding: 3.5rem 2rem !important;
+}
+
+.nav-logo-box {
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand-img {
+    height: 100px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.dropdown-content {
+    top: 100%;
+}
+
+.motivation-box {
+    background-color: #fff;
+    border: 2px double var(--v-brown);
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.process-step {
+    border-left: 2px solid var(--v-gold);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.table-container {
+    width: 100%;
+    margin: 40px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    min-width: 600px;
+    border: 1px solid var(--v-gold);
+}
+
+th {
+    background-color: var(--v-brown);
+    color: var(--v-gold);
+    padding: 15px;
+    text-align: left;
+    font-family: 'Playfair Display';
+    border-bottom: 2px solid var(--v-gold);
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.6;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f7f2;
+}
+
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.career-card {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.career-card h3 {
+    color: var(--v-brown);
+    margin-bottom: 15px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--v-brown);
+    color: #fff !important;
+    text-decoration: none;
+    font-family: 'Playfair Display';
+    font-size: 0.9rem;
+}
+
+.read-more-btn:hover {
+    background-color: var(--v-gold);
+}
+
+.site-footer {
+    background-color: #2b1d14;
+    color: var(--v-gold);
+    padding: 60px 0;
+    border-top: 2px solid var(--v-gold);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-text p, .intro-content p {
+    color: #d1c4b9 !important;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.footer-text p.en, .intro-content p.en {
+    color: #bfae9f !important;
+    font-size: 0.85rem;
+}
+
+footer p {
+    color: #999 !important;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        padding: 1.5rem 10px !important;
+    }
+
+    .nav-brand-img {
+        height: 45px;
+    }
+
+    nav a {
+        font-size: 0.8rem !important;
+        white-space: nowrap;
+    }
+
+    .career-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .image-frame {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        padding: 10px !important;
+        background: white !important;
+        border: 1px solid #ddd !important;
+        box-sizing: border-box !important;
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .image-frame img {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+
+    iframe {
+        width: 100% !important;
+        aspect-ratio: 16 / 9;
+    }
+
+    .table-container {
+        margin-left: -20px;
+        margin-right: -20px;
+        width: calc(100% + 40px);
+    }
+
+    p, h1, h2, h3 {
+        padding: 0 !important;
+    }
+}
+</style>
+<body>
+
+    <nav>
+        <img src="images/header_01.png" alt="Logo" class="nav-brand-img">
+    <a href="index.html">首頁</a>
+    <a href="life.html">個人生平</a>
+    
+    <div class="dropdown">
+        <a href="career.html" class="dropbtn">事業</a>
+        <div class="dropdown-content">
+            <a href="adversity.html">走出變故</a>
+            <a href="low-points.html">攀越低谷</a>
+            <a href="shoes-trend.html">溜冰鞋潮流</a>
+            <a href="scaling.html">國際化與規模化</a>
+        </div>
+    </div>
+
+    <a href="family.html">家庭</a>
+    <a href="values.html">思想品質</a>
+    <a href="future.html">未來展望</a>
+
+    <div class="dropdown">
+        <a href="about.html" class="dropbtn">關於我們</a>
+        <div class="dropdown-content">
+            <a href="notes.html">小組記事</a>
+            <a href="team.html">團隊</a>
+        </div>
+    </div>
+    <a href="data.html">資料來源</a>
+
+    <a href="index_en.html" style="margin-left: 20px; color: #ccac82; font-weight: bold;">English</a>
+</nav>
+
+<div class="container">
+    <div class="intro-section">
+        <h1>關於我們</h1>
+        <p>
+            這個專案是淡江高中的學生合作完成的。我們投入了大量時間來記錄紀文豪理事長的生活與價值觀。請在下方探索我們的團隊和專案筆記。
+        </p>
+    </div>
+
+    <div class="career-grid">
+        <div class="career-card">
+            <h3>我們的團隊</h3>
+            <p>認識這個專案背後的學生與指導老師，並了解我們的分工。</p>
+            <a href="team.html" class="read-more-btn">前往<strong>我們的團隊</strong></a>
+        </div>
+
+        <div class="career-card">
+            <h3>專案筆記</h3>
+            <p>閱讀我們的反思、訪談記錄以及製作此網站的過程。</p>
+            <a href="notes.html" class="read-more-btn">前往<strong>專案筆記</strong></a>
+        </div>
+    </div>
+</div>
+<footer>
+        <p>© 2026 Tamkang High School CyberFair Team | Project: Chi Wen-Hao</p>
+    </footer>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-title-row">
+                <h3>關於我們 About Us</h3>
+                <div class="main-logo-container">
+                    <img src="images/home_06.jpg" alt="TMSSOCIAL STUDIO" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="zh">我們是一群淡江高中的學生，也有專業的師長幫忙。我們重視誠懇、合作與持續學習，並在研究過程中不斷培養解決問題的能力。</p>
+                <p class="en">We are a group of students from Tamkang High School, supported by experienced teachers who guide our work. We value sincerity, collaboration, and continuous learning, and through our research process we constantly develop our ability to solve problems.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-title-row">
+                <h3>紀文豪理事長 President Wen-Hao Chi</h3>
+                </div>
+            <div class="intro-content">
+                <p class="zh">紀文豪先生是一位傑出的企業家與社會實踐者，秉持著「五心四能」的創業精神，在事業成功的同時，更致力於宗親文化與社會公益。他的回憶錄《荒蕪與播種》記錄了其不畏艱難、開拓進取的人生哲學。</p>
+                <p class="en">Mr. Wen-Hao Chi is an outstanding entrepreneur. His memoir reflects a philosophy of perseverance and progress.</p>
+            </div>
+            <div class="cyberfair-container">
+    <a href="http://globalschoolnet.org/gsncf/index.cfm" target="_blank">
+        <img src="images/home_5.jpg" alt="Cyberfair Logo" class="cyber-logo">
+    </a>
+</div>
+        </div>
+    </div>
+</footer>
+</body>
+</head>
+</html>

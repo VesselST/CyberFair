@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Group Notes | About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+:root {
+    --v-brown: #3d2b1f;
+    --v-gold: #ccac82;
+    --paper: #fdfaf5;
+    --text: #4a4a4a;
+}
+
+body, html { 
+    margin: 0; padding: 0; 
+    overflow-x: hidden; 
+    width: 100%;
+    background-color: var(--paper);
+    color: var(--text);
+}
+
+nav {
+    background: var(--v-brown);
+    padding: 3.5rem 2rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-logo-box {
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand-img {
+    height: 100px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 1.1rem !important;
+    font-family: 'Playfair Display', serif;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4e342e;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1001;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: #f5f5dc !important;
+    padding: 12px 20px;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown:hover .dropdown-content { display: block; }
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.motivation-box {
+    background-color: #fff;
+    border: 2px double var(--v-brown);
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.motivation-box::before {
+    content: "Research Motivation";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: var(--v-brown);
+}
+
+.process-step {
+    border-left: 2px solid var(--v-gold);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.member-block {
+    background-color: #fdfaf5;
+    border: 1px solid #e3d9c6;
+    padding: 40px;
+    margin-bottom: 50px;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 6px 6px 0px rgba(61, 43, 31, 0.05);
+    transition: all 0.4s ease;
+}
+
+.member-block:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 12px 12px 20px rgba(61, 43, 31, 0.1);
+}
+
+.member-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 20px;
+}
+
+.member-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--v-gold);
+    padding: 4px;
+    background: #fff;
+}
+
+.member-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--v-brown);
+}
+
+.member-intro p {
+    text-align: justify;
+    line-height: 2;
+    color: #444;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+    background-color: #fdfaf5;
+    border: 1px solid #ccac82;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+tr { border-bottom: 1px solid #eee6d8; transition: background 0.3s; }
+tr:hover { background-color: #f9f3e9; }
+td { padding: 15px 20px; line-height: 1.8; color: #3d2b1f; }
+td:first-child {
+    width: 15%;
+    font-weight: bold;
+    color: #8b7355;
+    background-color: #f7f0e3;
+    border-right: 1px solid #ccac82;
+}
+
+.en-content {
+    color: #8c7e6d;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.site-footer {
+    background-color: #2b1d14;
+    color: var(--v-gold);
+    padding: 60px 0;
+    border-top: 2px solid var(--v-gold);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.footer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3d2b1f;
+    padding-bottom: 10px;
+}
+
+.footer-text p, .intro-content p {
+    color: #d1c4b9 !important;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.footer-text p.en { color: #bfae9f !important; font-size: 0.85rem; }
+
+footer p {
+    color: #999 !important;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1.5rem 10px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .nav-brand-img { height: 45px; }
+    nav a { font-size: 0.75rem; padding: 5px; }
+    .container {
+        width: 100% !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+    }
+    .image-frame {
+        width: 100vw !important;
+        margin-left: -20px !important;
+        padding: 8px !important;
+        background: white !important;
+        border-top: 1px solid #eee !important;
+        border-bottom: 1px solid #eee !important;
+        box-sizing: border-box !important;
+    }
+    .image-frame img { width: 100% !important; height: auto !important; }
+    iframe { width: 100% !important; aspect-ratio: 16 / 9; }
+    .footer-container { flex-direction: column; gap: 30px; }
+    .member-block { padding: 25px; }
+    .member-photo { width: 70px; height: 70px; }
+    .member-name { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+    <nav>
+        <img src="images/header_01.png" alt="Logo" class="nav-brand-img">
+    <a href="index.html">首頁</a>
+    <a href="life.html">個人生平</a>
+    
+    <div class="dropdown">
+        <a href="career.html" class="dropbtn">事業</a>
+        <div class="dropdown-content">
+            <a href="adversity.html">走出變故</a>
+            <a href="low-points.html">攀越低谷</a>
+            <a href="shoes-trend.html">溜冰鞋潮流</a>
+            <a href="scaling.html">國際化與規模化</a>
+        </div>
+    </div>
+
+    <a href="family.html">家庭</a>
+    <a href="values.html">思想品質</a>
+    <a href="future.html">未來展望</a>
+
+    <div class="dropdown">
+        <a href="about.html" class="dropbtn">關於我們</a>
+        <div class="dropdown-content">
+            <a href="notes.html">小組記事</a>
+            <a href="team.html">團隊</a>
+        </div>
+    </div>
+    <a href="data.html">資料來源</a>
+
+    <a href="index_en.html" style="margin-left: 20px; color: #ccac82; font-weight: bold;">English</a>
+</nav>
+
+    <div class="container">
+        <h1 style="text-align: center; margin-top: 40px;">小組記事</h1>
+        <div class="image-frame">
+                <img src="images/about_01.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_02.jpg" alt="Sharing experiences">    
+        </div>
+        
+        <section class="story-section">
+            <h2>第一次採訪</h2>
+            <p>2025年9月19號，我們第一次採訪校友會理事長紀文豪，那次其實事前準備不是很充足，所以那時因為攝像頭的問題拖延了快一小時。但在我們開始訪問理事長時，不管之前的錯誤，我們都樂在其中的聽著他的人生故事，我們從紀文豪的談話中，學到了堅忍、包容、溝通是他人生中領悟到的重要道理。</p>
+        </section>
+        <div class="image-frame">
+                <img src="images/about_03.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_04.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_05.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_05.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about06.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_07.jpg" alt="Sharing experiences">    
+        </div>
+
+        <section class="story-section">
+            <h2>第二次採訪</h2>
+            <p>2025年10月2號，這次我們記起上次的經驗，完全準備了事前工作。很快的進入訪談階段，這次訪問是不同人去採訪記文豪理事長，讓他們也得到採訪的經驗。這時我們已經跟理事長建立起友好的關係，還說下次要請我們吃阿給呢。</p>
+        </section>
+        <div class="image-frame">
+                <img src="images/about_08.png" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_09.png" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_10.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_11.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_12.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_13.jpg" alt="Sharing experiences">    
+        </div>
+
+        <section class="story-section">
+            <h2>公司探訪</h2>
+            <p>2025年12月23號，這次不同以往，我們到了紅樹林站前的台綜院大樓，是理事長平常的辦公處，見識了什麼叫事業有成的裝潢，品味實在好。這次不僅收穫了理事長在國外深造與當地官員交情的故事，也更了解理事長是怎麼秉持著堅忍、包容、溝通的人生道理去生活、工作或是人情事故。</p>
+        </section>
+        <div class="image-frame">
+                <img src="images/about_14.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_15.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_16.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_17.jpg" alt="Sharing experiences">    
+        </div>
+        <div class="image-frame">
+                <img src="images/about_18.jpg" alt="Sharing experiences">    
+        </div>
+    </div>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-title-row">
+                <h3>關於我們 About Us</h3>
+                <div class="main-logo-container">
+                    <img src="images/home_06.jpg" alt="TMSSOCIAL STUDIO" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="zh">我們是一群淡江高中的學生，也有專業的師長幫忙。我們重視誠懇、合作與持續學習，並在研究過程中不斷培養解決問題的能力。</p>
+                <p class="en">We are a group of students from Tamkang High School, supported by experienced teachers who guide our work. We value sincerity, collaboration, and continuous learning, and through our research process we constantly develop our ability to solve problems.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-title-row">
+                <h3>紀文豪理事長 President Wen-Hao Chi</h3>
+                </div>
+            <div class="intro-content">
+                <p class="zh">紀文豪先生是一位傑出的企業家與社會實踐者，秉持著「五心四能」的創業精神，在事業成功的同時，更致力於宗親文化與社會公益。他的回憶錄《荒蕪與播種》記錄了其不畏艱難、開拓進取的人生哲學。</p>
+                <p class="en">Mr. Wen-Hao Chi is an outstanding entrepreneur. His memoir reflects a philosophy of perseverance and progress.</p>
+            </div>
+            <div class="cyberfair-container">
+    <a href="http://globalschoolnet.org/gsncf/index.cfm" target="_blank">
+        <img src="images/home_5.jpg" alt="Cyberfair Logo" class="cyber-logo">
+    </a>
+</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Personal Life | Chi Wen-Hao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+:root {
+    --v-brown: #3d2b1f;
+    --v-gold: #ccac82;
+    --paper: #fdfaf5;
+    --text: #4a4a4a;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    background-color: var(--paper);
+    color: var(--text);
+}
+
+nav {
+    background: var(--v-brown);
+    padding: 3.5rem 2rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-logo-box {
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand-img {
+    height: 100px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 1.1rem !important;
+    font-family: 'Playfair Display', serif;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4e342e;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+    z-index: 1001;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: #f5f5dc !important;
+    padding: 12px 20px;
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.motivation-box {
+    background-color: #fff;
+    border: 2px double var(--v-brown);
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.motivation-box::before {
+    content: "Research Motivation";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: var(--v-brown);
+}
+
+.process-step {
+    border-left: 2px solid var(--v-gold);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.table-container {
+    width: 100%;
+    margin: 40px 0;
+    overflow-x: auto;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--v-gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    min-width: 800px;
+    table-layout: auto;
+}
+
+th {
+    background-color: var(--v-brown);
+    color: var(--v-gold);
+    padding: 15px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--v-gold);
+    white-space: nowrap;
+}
+
+td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee6d8;
+    line-height: 1.8;
+    color: var(--v-brown);
+    vertical-align: top;
+    word-break: normal;
+}
+
+tr:nth-child(even) {
+    background-color: #fdfaf5;
+}
+
+tr:hover {
+    background-color: #f9f3e9;
+}
+
+.site-footer {
+    background-color: #2b1d14;
+    color: var(--v-gold);
+    padding: 60px 0;
+    border-top: 2px solid var(--v-gold);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3d2b1f;
+    padding-bottom: 10px;
+}
+
+.footer-title-row h3 {
+    margin: 0;
+    white-space: nowrap;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+}
+
+.footer-text p, .intro-content p {
+    color: #d1c4b9 !important;
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.footer-text p.en, .intro-content p.en {
+    color: #bfae9f !important;
+    font-size: 0.85rem;
+}
+
+footer p {
+    color: #999 !important;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1.5rem 10px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .nav-brand-img {
+        height: 45px;
+    }
+    nav a {
+        font-size: 0.75rem;
+        padding: 5px;
+    }
+    .dropdown-content {
+        min-width: 160px;
+    }
+    .container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+    }
+    .table-container {
+        margin-left: -20px;
+        margin-right: -20px;
+        width: calc(100% + 40px);
+        border-left: none;
+        border-right: none;
+    }
+    .image-frame {
+        width: 100vw !important;
+        margin-left: -20px !important;
+        position: relative;
+        padding: 8px !important;
+        background: white !important;
+        border-top: 1px solid #eee !important;
+        border-bottom: 1px solid #eee !important;
+        box-sizing: border-box !important;
+    }
+    .image-frame img {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+    iframe {
+        width: 100% !important;
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+    p, h1, h2, h3 {
+        padding: 0 !important;
+    }
+}
+</style>
+</head>
+<body>
+    <nav>
+        <img src="images/header_01.png" alt="Logo" class="nav-brand-img">
+    <a href="index.html">首頁</a>
+    <a href="life.html">個人生平</a>
+    
+    <div class="dropdown">
+        <a href="career.html" class="dropbtn">事業</a>
+        <div class="dropdown-content">
+            <a href="adversity.html">走出變故</a>
+            <a href="low-points.html">攀越低谷</a>
+            <a href="shoes-trend.html">溜冰鞋潮流</a>
+            <a href="scaling.html">國際化與規模化</a>
+        </div>
+    </div>
+
+    <a href="family.html">家庭</a>
+    <a href="values.html">思想品質</a>
+    <a href="future.html">未來展望</a>
+
+    <div class="dropdown">
+        <a href="about.html" class="dropbtn">關於我們</a>
+        <div class="dropdown-content">
+            <a href="notes.html">小組記事</a>
+            <a href="team.html">團隊</a>
+        </div>
+    </div>
+    <a href="data.html">資料來源</a>
+
+    <a href="index_en.html" style="margin-left: 20px; color: #ccac82; font-weight: bold;">English</a>
+</nav>
+
+    <div class="container">
+        <h1>個人生平</h1>
+
+        <table class="info-table">
+            <tr><td>出生</td><td>1949年，台灣台北市迪化街</td></tr>
+            <tr><td>教育程度</td><td>淡江中學畢業，後獲商學相關榮譽學位（美國加州Cal Grad學院商學榮譽博士）</td></tr>
+            <tr><td>知名身分</td><td>緯豪集團創辦人與全球行銷、老淡水球場改革者與高球推廣者</td></tr>
+            <tr><td>職業</td><td>企業家、緯豪集團董事長、台灣高爾夫俱樂部會長、社會企業領袖、淡江高中校友會理事長</td></tr>
+            <tr><td>父母</td><td>父親紀順吉、養母邱金圓</td></tr>
+            <tr><td>配偶</td><td>劉柑柑Candy</td></tr>
+            <tr><td>子女</td><td>長子紀承緯、次子紀柏緯</td></tr>
+        </table>
+
+        <div class="image-frame">
+            <img src="images/life_01.jpg" alt="Father">
+            <p class="caption">一九五○年代，紀文豪父親前往日本 推展台灣水果臨行前留影</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_02.jpg" alt="Portrait">
+            <p class="caption">紀文豪先生個人肖像照</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_03.jpg" alt="China Trip">
+            <p class="caption">解嚴後，紀文豪於一九八八 年首次去中國大陸，登陸於廣東的容奇港。</p>
+        </div>
+
+        <h2>早年生活</h2>
+        <p>紀文豪生於台北市迪化街一商業家庭，幼年家境最初富裕。後因父親早逝家道中落，青年時期在淡江中學求學兼職，假日時在老淡水高爾夫球場擔任桿弟（球場助手），培養對高爾夫的深厚情感與對服務、溝通的基礎觀念。</p>
+
+        <div class="image-frame">
+            <img src="images/life_04.jpg" alt="School Trip">
+            <p class="caption">就讀永樂國小時，於指南宮校外教學的團體照</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_05.jpg" alt="Childhood">
+            <p class="caption">幼年時期團體照</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_06.jpg" alt="Ancestral Photo">
+            <p class="caption">一九○○年代，紀家人 於木柵仙公廟合影，此時紀文豪尚未出生</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_07.jpg" alt="Family Photo">
+            <p class="caption">與家人合照</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_08.jpg" alt="Dihua Street">
+            <p class="caption">迪化街</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_09.jpg" alt="Twin Brother">
+            <p class="caption">與雙胞胎弟弟的合照</p>
+        </div>
+
+        <h2>生涯</h2>
+        <p>1974年，紀文豪開始創業，成立緯豪實業。初期以外銷代工為主，著重在屋外運動用品（如滑水板、繩索及相關裝備）的生產與出口，產品行銷至全球多個國家並建立長期客戶關係。公司後擴展至貿易、文化及投資等多元領域。 </p>
+        <p>主張企業經營需有「善心、用心、謙虛心、逆境檢討心、堅持心」等理念，並以實務經驗推動管理與品質責任。</p>
+
+        <div class="image-frame">
+            <img src="images/life_10.jpg" alt="Golf Tournament">
+            <p class="caption">三商盃高爾夫邀請賽</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_11.jpg" alt="Golf Tournament 2">
+            <p class="caption">三商盃高爾夫邀請賽</p>
+        </div>
+
+        <p>紀文豪長年參與台灣高爾夫俱樂部（老淡水球場）事務，曾擔任桿弟委員會召集人、公關委員會召集人等職務，並於老淡水球場第37屆會長（2019-2021）任期引領改革。任內強化場地品質、積極與地方政府協調租約與計畫，並在疫情期間協助基層人員爭取紓困與支援措施。</p>
+        <p>他倡議結合教育機構與培訓資源推動高爾夫運動發展，並帶領球場在百年歷史節點推動多項文化與推廣活動。</p>
+
+        <h2>公職與社會參與</h2>
+        <p>紀文豪長期參與社會公益與地方交流，曾擔任美國加州聖伯納迪諾郡駐台總代表（促成多項地方交流合作），並積極投入國際扶輪社、淡江中學校友會等組織。</p>
+        <p>他亦注重青年教育、企業經營理念分享與高爾夫推廣等活動，在地方社群與產業圈有一定影響力。</p>
+
+        <div class="image-frame">
+            <img src="images/life_12.jpg" alt="Chi Wen-Hao 1">
+            <p class="caption">紀文豪（左1）</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_13.jpg" alt="WEVER Group">
+            <p class="caption">緯豪集團公司</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_14.jpg" alt="Lions Club Speech">
+            <p class="caption">紀文豪在國際獅子會慶典上講話</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_15.jpg" alt="Inauguration">
+            <p class="caption">國際獅子會就職典禮</p>
+        </div>
+
+        <h2>經營理念</h2>
+        <p>紀文豪強調企業與個人應具備堅持與專業，並主張將日常生活與商機緊密連結，以「專業、經驗、長期客戶信任」為企業成功基礎。他也認為對社會與基層工作者的支持，是企業責任的一部分。</p>
+
+        <div class="image-frame">
+            <img src="images/life_16.jpg" alt="Skates">
+            <p class="caption">溜冰鞋和滑板</p>
+        </div>
+
+        <h2>個人生活</h2>
+        <p>紀文豪的家庭生活以淡水為核心。妻子柑柑（Candy）與兩名兒子，長年陪伴他走過企業經營與社會參與的不同階段。他選擇在淡水長期扎根，不僅經營事業，也經營高爾夫社群與地方連結。</p>
+        <p class="quote">對他而言，人生並非不斷向外擴張，而是在一個熟悉的地方，把事情做深、做久。這樣的節奏，也成為他一生行動邏輯的最佳註解。</p>
+
+        <div class="image-frame">
+            <img src="images/life_17.jpg" alt="Family">
+            <p class="caption">與家人合照</p>
+        </div>
+
+        <div class="image-frame">
+            <img src="images/life_18.jpg" alt="Wife">
+            <p class="caption">與妻子的合照</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Tamkang High School CyberFair Team</p>
+    </footer>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div class="footer-title-row">
+                <h3>關於我們 About Us</h3>
+                <div class="main-logo-container">
+                    <img src="images/home_06.jpg" alt="TMSSOCIAL STUDIO" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="zh">我們是一群淡江高中的學生，也有專業的師長幫忙。我們重視誠懇、合作與持續學習，並在研究過程中不斷培養解決問題的能力。</p>
+                <p class="en">We are a group of students from Tamkang High School, supported by experienced teachers who guide our work. We value sincerity, collaboration, and continuous learning, and through our research process we constantly develop our ability to solve problems.</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-title-row">
+                <h3>紀文豪理事長 President Wen-Hao Chi</h3>
+                </div>
+            <div class="intro-content">
+                <p class="zh">紀文豪先生是一位傑出的企業家與社會實踐者，秉持著「五心四能」的創業精神，在事業成功的同時，更致力於宗親文化與社會公益。他的回憶錄《荒蕪與播種》記錄了其不畏艱難、開拓進取的人生哲學。</p>
+                <p class="en">Mr. Wen-Hao Chi is an outstanding entrepreneur. His memoir reflects a philosophy of perseverance and progress.</p>
+            </div>
+            <div class="cyberfair-container">
+    <a href="http://globalschoolnet.org/gsncf/index.cfm" target="_blank">
+        <img src="images/home_5.jpg" alt="Cyberfair Logo" class="cyber-logo">
+    </a>
+</div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
